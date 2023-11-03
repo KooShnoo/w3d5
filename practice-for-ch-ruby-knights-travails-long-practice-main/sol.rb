@@ -37,7 +37,7 @@ class KnightPathFinder
   end
 
   def find_path(end_pos)
-    trace_back_path(@move_tree_root.bfs(end_pos))
+    trace_back_path(@move_tree_root.bfs(end_pos)).reverse
   end
 
   def trace_back_path(node)
