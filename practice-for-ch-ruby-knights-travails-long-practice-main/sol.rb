@@ -31,20 +31,22 @@ class KnightPathFinder
     until node_q.empty?
       searching = node_q.shift
       new_move_nodes = new_move_positions(searching.value).map { |move| PolyTreeNode.new(move) }
-      searching.children = new_move_nodes
+      new_move_nodes.each { |node| searching.add_child(node) }
       node_q += new_move_nodes
     end
   end
 
   def find_path(end_pos)
-    @move_tree_root.dfs(end_pos)
+    trace_back_path(@move_tree_root.bfs(end_pos))
   end
 
   def trace_back_path(node)
     path = []
-    until node.parent.nil?
-
+    until node.nil?
+      path.push(node.value)
+      node = node.parent
     end
+    path
   end
 
   private
@@ -61,5 +63,9 @@ end
 #   child.parent = nodes[parent_index]
 #   parent_index += 1 if index.even?
 # end
+
+k = KnightPathFinder.new([0, 0])
+p k.find_path([7, 6])
+p k.find_path([6,2])
 
 binding.pry

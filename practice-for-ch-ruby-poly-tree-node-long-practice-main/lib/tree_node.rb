@@ -51,5 +51,5 @@ class PolyTreeNode
 
   # private
 
-  attr_writer :value, :children
+  # attr_writer :value, :children
 end
