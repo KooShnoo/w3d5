@@ -66,6 +66,6 @@ end
 
 k = KnightPathFinder.new([0, 0])
 p k.find_path([7, 6])
-p k.find_path([6,2])
+p k.find_path([6, 2])
 
 binding.pry
